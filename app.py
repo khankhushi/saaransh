@@ -22,7 +22,8 @@ def fetch_summary(transcript)
     summarise = pipeline('summarization')
     summary = ''
     summary = ''
-    for i in range(0, (len(transcript)//1000)+1):
+    for i in range(0, (len(transcript)//1000)+1): 
+        # Transformers api only work upto 1000 characters so dividing transcripts into parts of 1000 then combining them.
         summary_text = summarise(transcript[i*1000:(i+1)*1000])[0]['summary_text']
         summary = summary + summary_text + ' '
     return summary
